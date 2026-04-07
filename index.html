@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creator Survey — 3 Minutes to Shape the Future of Content</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,500;0,700;0,900;1,300;1,700&family=Epilogue:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F7F4EF;
+  --surface: #FFFFFF;
+  --surface2: #F0EDE7;
+  --ink: #1A1612;
+  --ink2: #4A4540;
+  --ink3: #8A8278;
+  --accent: #C8442A;
+  --accent2: #E8A020;
+  --accent3: #2A7A4A;
+  --border: #E0D8CE;
+  --border2: #C8BFB5;
+  --shadow: rgba(26,22,18,0.08);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Epilogue', sans-serif;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Grain texture */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 0; opacity: 0.6;
+}
+
+/* Decorative blobs */
+body::after {
+  content: '';
+  position: fixed; top: -100px; right: -100px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(200,68,42,0.06) 0%, transparent 70%);
+  pointer-events: none; z-index: 0;
+}
+
+/* ── PROGRESS BAR ── */
+.progress-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: 3px; background: var(--border);
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 0%;
+}
+
+/* ── HEADER ── */
+.site-header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 99;
+  padding: 16px 32px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(247,244,239,0.9); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  margin-top: 3px;
+}
+
+.header-brand {
+  font-family: 'Fraunces', serif; font-weight: 700; font-size: 18px;
+  display: flex; align-items: center; gap: 8px;
+}
+.brand-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--accent);
+}
+
+.header-progress {
+  font-size: 13px; color: var(--ink3);
+  display: flex; align-items: center; gap: 8px;
+}
+.progress-num {
+  font-weight: 700; color: var(--accent);
+  font-family: 'Fraunces', serif;
+}
+
+/* ── MAIN WRAPPER ── */
+.wrapper {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 100px 24px 80px;
+  position: relative; z-index: 1;
+}
+
+/* ── INTRO SCREEN ── */
+.intro {
+  text-align: center;
+  padding: 40px 0;
+}
+
+.intro-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 20px; padding: 6px 16px;
+  font-size: 12px; font-weight: 600; color: var(--ink3);
+  letter-spacing: 0.5px; margin-bottom: 28px;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+.intro-badge-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent3);
+  animation: blink 2s infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+.intro-title {
+  font-family: 'Fraunces', serif; font-weight: 900;
+  font-size: clamp(36px, 6vw, 56px); line-height: 1.05;
+  letter-spacing: -1px; margin-bottom: 20px;
+}
+.intro-title em { font-style: italic; color: var(--accent); }
+
+.intro-sub {
+  font-size: 17px; color: var(--ink2); line-height: 1.7;
+  max-width: 480px; margin: 0 auto 36px;
+}
+
+.intro-meta {
+  display: flex; align-items: center; justify-content: center; gap: 24px;
+  margin-bottom: 40px;
+}
+.meta-item {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 13px; color: var(--ink3);
+}
+.meta-icon { font-size: 15px; }
+
+.btn-start {
+  background: var(--accent); color: #fff;
+  border: none; padding: 16px 40px; border-radius: 4px;
+  font-family: 'Fraunces', serif; font-weight: 700; font-size: 17px;
+  cursor: pointer; transition: all 0.2s;
+  box-shadow: 0 4px 20px rgba(200,68,42,0.3);
+  letter-spacing: 0.3px;
+}
+.btn-start:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(200,68,42,0.4);
+}
+
+.intro-note {
+  margin-top: 16px; font-size: 12px; color: var(--ink3);
+}
+
+/* ── QUESTION SCREEN ── */
+.question-screen { display: none; }
+.question-screen.active { display: block; animation: slideUp 0.4s cubic-bezier(0.4,0,0.2,1); }
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.q-section-label {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--ink3);
+  background: var(--surface2); border: 1px solid var(--border);
+  border-radius: 20px; padding: 4px 12px;
+  margin-bottom: 20px;
+}
+
+.q-number {
+  font-family: 'Fraunces', serif; font-size: 13px;
+  color: var(--ink3); margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+.q-number::after {
+  content: ''; flex: 1; height: 1px; background: var(--border);
+}
+
+.q-text {
+  font-family: 'Fraunces', serif; font-weight: 500;
+  font-size: clamp(20px, 3.5vw, 28px); line-height: 1.3;
+  letter-spacing: -0.3px; margin-bottom: 10px;
+}
+
+.q-hint {
+  font-size: 13px; color: var(--ink3); margin-bottom: 28px; line-height: 1.5;
+}
+
+/* Options */
+.options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
+
+.option {
+  background: var(--surface); border: 1.5px solid var(--border);
+  border-radius: 8px; padding: 14px 18px;
+  cursor: pointer; transition: all 0.2s;
+  display: flex; align-items: center; gap: 14px;
+  font-size: 15px; color: var(--ink2);
+  box-shadow: 0 1px 4px var(--shadow);
+}
+.option:hover {
+  border-color: var(--accent); background: #FEF5F3;
+  transform: translateX(4px);
+}
+.option.selected {
+  border-color: var(--accent); background: #FEF5F3;
+  color: var(--ink); font-weight: 600;
+  box-shadow: 0 2px 12px rgba(200,68,42,0.15);
+}
+.option.selected .opt-key { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+.opt-key {
+  width: 28px; height: 28px; border-radius: 6px;
+  border: 1.5px solid var(--border); background: var(--surface2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; color: var(--ink3);
+  flex-shrink: 0; transition: all 0.2s;
+  font-family: 'Epilogue', sans-serif;
+}
+
+/* Multi-select grid */
+.options-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 10px; margin-bottom: 32px;
+}
+@media(max-width: 500px) { .options-grid { grid-template-columns: 1fr; } }
+
+/* Scale rating */
+.scale-wrap { margin-bottom: 32px; }
+.scale-labels {
+  display: flex; justify-content: space-between;
+  font-size: 12px; color: var(--ink3); margin-bottom: 12px;
+}
+.scale-options {
+  display: flex; gap: 8px;
+}
+.scale-btn {
+  flex: 1; aspect-ratio: 1;
+  background: var(--surface); border: 1.5px solid var(--border);
+  border-radius: 8px; cursor: pointer;
+  font-family: 'Fraunces', serif; font-weight: 700; font-size: 16px;
+  color: var(--ink3); transition: all 0.2s;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 1px 4px var(--shadow);
+}
+.scale-btn:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+.scale-btn.selected { background: var(--accent); border-color: var(--accent); color: #fff; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(200,68,42,0.3); }
+
+/* Text input */
+.text-input {
+  width: 100%; background: var(--surface);
+  border: 1.5px solid var(--border); border-radius: 8px;
+  padding: 16px 18px; font-family: 'Epilogue', sans-serif;
+  font-size: 15px; color: var(--ink); outline: none;
+  transition: border-color 0.2s; resize: vertical;
+  min-height: 100px; line-height: 1.6;
+  box-shadow: 0 1px 4px var(--shadow);
+  margin-bottom: 32px;
+}
+.text-input:focus { border-color: var(--accent); }
+.text-input::placeholder { color: var(--ink3); }
+
+/* Price input */
+.price-input-wrap {
+  position: relative; margin-bottom: 32px;
+}
+.price-prefix {
+  position: absolute; left: 16px; top: 50%; transform: translateY(-50%);
+  font-family: 'Fraunces', serif; font-weight: 700; font-size: 20px; color: var(--ink3);
+}
+.price-input {
+  width: 100%; background: var(--surface);
+  border: 1.5px solid var(--border); border-radius: 8px;
+  padding: 18px 18px 18px 44px;
+  font-family: 'Fraunces', serif; font-weight: 700; font-size: 28px;
+  color: var(--ink); outline: none; transition: border-color 0.2s;
+  box-shadow: 0 1px 4px var(--shadow);
+}
+.price-input:focus { border-color: var(--accent); }
+.price-input::placeholder { color: var(--border2); }
+
+/* Navigation */
+.q-nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 8px; border-top: 1px solid var(--border);
+}
+
+.btn-back {
+  background: none; border: 1.5px solid var(--border);
+  color: var(--ink3); padding: 12px 24px; border-radius: 4px;
+  font-family: 'Epilogue', sans-serif; font-size: 14px; font-weight: 600;
+  cursor: pointer; transition: all 0.2s;
+}
+.btn-back:hover { border-color: var(--ink3); color: var(--ink); }
+
+.btn-next {
+  background: var(--ink); color: #fff;
+  border: none; padding: 12px 28px; border-radius: 4px;
+  font-family: 'Fraunces', serif; font-weight: 700; font-size: 15px;
+  cursor: pointer; transition: all 0.2s;
+  display: flex; align-items: center; gap: 8px;
+}
+.btn-next:hover { background: var(--accent); transform: translateX(2px); }
+.btn-next:disabled { opacity: 0.35; cursor: not-allowed; transform: none; }
+
+.skip-link {
+  font-size: 12px; color: var(--ink3); cursor: pointer;
+  text-decoration: underline; text-underline-offset: 2px;
+}
+.skip-link:hover { color: var(--ink2); }
+
+/* ── THANK YOU ── */
+#screen-thanks { display: none; text-align: center; }
+#screen-thanks.active { display: block; animation: slideUp 0.5s ease; }
+
+.thanks-icon {
+  font-size: 64px; margin-bottom: 24px; display: block;
+  animation: bounceIn 0.6s cubic-bezier(0.34,1.56,0.64,1);
+}
+@keyframes bounceIn { from { transform: scale(0); } to { transform: scale(1); } }
+
+.thanks-title {
+  font-family: 'Fraunces', serif; font-weight: 900; font-size: 40px;
+  letter-spacing: -1px; margin-bottom: 14px; line-height: 1.1;
+}
+.thanks-title em { font-style: italic; color: var(--accent); }
+
+.thanks-sub { font-size: 16px; color: var(--ink2); line-height: 1.7; margin-bottom: 36px; }
+
+/* Summary card */
+.summary-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 28px;
+  text-align: left; margin-bottom: 28px;
+  box-shadow: 0 4px 24px var(--shadow);
+}
+.summary-title {
+  font-family: 'Fraunces', serif; font-weight: 700; font-size: 16px;
+  margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 8px;
+}
+.summary-item {
+  display: flex; gap: 12px; padding: 10px 0;
+  border-bottom: 1px solid var(--border); font-size: 14px;
+}
+.summary-item:last-child { border-bottom: none; }
+.summary-q { color: var(--ink3); min-width: 180px; flex-shrink: 0; font-size: 13px; }
+.summary-a { color: var(--ink); font-weight: 600; }
+
+.share-note {
+  background: linear-gradient(135deg, #FEF5F3, #FFF8F0);
+  border: 1px solid rgba(200,68,42,0.15); border-radius: 8px;
+  padding: 16px 20px; font-size: 13px; color: var(--ink2);
+  line-height: 1.6; margin-bottom: 24px;
+}
+.share-note strong { color: var(--accent); }
+
+.btn-share {
+  background: var(--accent); color: #fff;
+  border: none; padding: 14px 32px; border-radius: 4px;
+  font-family: 'Fraunces', serif; font-weight: 700; font-size: 15px;
+  cursor: pointer; transition: all 0.2s;
+  box-shadow: 0 4px 16px rgba(200,68,42,0.3);
+}
+.btn-share:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(200,68,42,0.4); }
+
+/* ── SECTION DIVIDERS ── */
+.section-break {
+  display: none; text-align: center; padding: 40px 0;
+  animation: slideUp 0.4s ease;
+}
+.section-break.active { display: block; }
+.section-break-num {
+  font-family: 'Fraunces', serif; font-weight: 900; font-size: 80px;
+  color: var(--border2); line-height: 1; margin-bottom: 12px;
+}
+.section-break-label {
+  font-family: 'Fraunces', serif; font-weight: 700; font-size: 24px;
+  letter-spacing: -0.5px; margin-bottom: 8px;
+}
+.section-break-desc { font-size: 14px; color: var(--ink3); margin-bottom: 28px; }
+
+/* Checkbox options */
+.checkbox-option {
+  background: var(--surface); border: 1.5px solid var(--border);
+  border-radius: 8px; padding: 13px 16px;
+  cursor: pointer; transition: all 0.2s;
+  display: flex; align-items: center; gap: 12px;
+  font-size: 14px; color: var(--ink2);
+  box-shadow: 0 1px 4px var(--shadow);
+}
+.checkbox-option:hover { border-color: var(--accent2); background: #FFFBF2; }
+.checkbox-option.checked { border-color: var(--accent2); background: #FFFBF2; color: var(--ink); font-weight: 600; }
+
+.checkbox-box {
+  width: 20px; height: 20px; border-radius: 4px;
+  border: 1.5px solid var(--border); background: var(--surface2);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; transition: all 0.2s; font-size: 12px;
+}
+.checkbox-option.checked .checkbox-box { background: var(--accent2); border-color: var(--accent2); color: #fff; }
+</style>
+</head>
+<body>
+
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<header class="site-header">
+  <div class="header-brand"><div class="brand-dot"></div> Creator Research</div>
+  <div class="header-progress">
+    Question <span class="progress-num" id="qCounter">—</span> of <span class="progress-num">14</span>
+  </div>
+</header>
+
+<div class="wrapper">
+
+  <!-- ══ INTRO ══ -->
+  <div id="screen-intro">
+    <div class="intro">
+      <div class="intro-badge"><div class="intro-badge-dot"></div> Takes 3 minutes · Completely anonymous</div>
+      <h1 class="intro-title">Help us build the <em>future</em> of content creation</h1>
+      <p class="intro-sub">We're exploring whether AI can clone a creator's voice, face & style — and generate ready-to-post videos automatically. Your honest answers shape what we build.</p>
+      <div class="intro-meta">
+        <div class="meta-item"><span class="meta-icon">⏱</span> 3 minutes</div>
+        <div class="meta-item"><span class="meta-icon">💬</span> 14 questions</div>
+        <div class="meta-item"><span class="meta-icon">🔒</span> Anonymous</div>
+      </div>
+      <button class="btn-start" onclick="startSurvey()">Start Survey →</button>
+      <div class="intro-note">No email required. No spam. Ever.</div>
+    </div>
+  </div>
+
+  <!-- ══ SECTION BREAK A ══ -->
+  <div class="section-break" id="break-A">
+    <div class="section-break-num">01</div>
+    <div class="section-break-label">About You & Your Channel</div>
+    <div class="section-break-desc">First, help us understand where you are as a creator.</div>
+    <button class="btn-next" onclick="nextQ()">Let's go →</button>
+  </div>
+
+  <!-- Q1 -->
+  <div class="question-screen" id="q1">
+    <div class="q-section-label">👤 About You</div>
+    <div class="q-number">Question 1</div>
+    <div class="q-text">Which platform is your primary content home?</div>
+    <div class="q-hint">Where do you post most often and care about most?</div>
+    <div class="options" id="opts-q1">
+      <div class="option" onclick="selectOption('q1', this, 'YouTube (long-form)')"><div class="opt-key">A</div> YouTube (long-form videos)</div>
+      <div class="option" onclick="selectOption('q1', this, 'YouTube Shorts')"><div class="opt-key">B</div> YouTube Shorts</div>
+      <div class="option" onclick="selectOption('q1', this, 'Instagram Reels')"><div class="opt-key">C</div> Instagram Reels</div>
+      <div class="option" onclick="selectOption('q1', this, 'Both YouTube & Instagram')"><div class="opt-key">D</div> Both YouTube & Instagram</div>
+      <div class="option" onclick="selectOption('q1', this, 'Other')"><div class="opt-key">E</div> Other (TikTok, Podcast, etc.)</div>
+    </div>
+    <div class="q-nav">
+      <span></span>
+      <button class="btn-next" id="next-q1" onclick="nextQ()" disabled>Next →</button>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="question-screen" id="q2">
+    <div class="q-section-label">👤 About You</div>
+    <div class="q-number">Question 2</div>
+    <div class="q-text">How many subscribers / followers do you have across all platforms?</div>
+    <div class="options" id="opts-q2">
+      <div class="option" onclick="selectOption('q2', this, 'Under 10K')"><div class="opt-key">A</div> Under 10K — just getting started</div>
+      <div class="option" onclick="selectOption('q2', this, '10K–50K')"><div class="opt-key">B</div> 10K–50K — growing steadily</div>
+      <div class="option" onclick="selectOption('q2', this, '50K–200K')"><div class="opt-key">C</div> 50K–200K — mid-tier creator</div>
+      <div class="option" onclick="selectOption('q2', this, '200K–1M')"><div class="opt-key">D</div> 200K–1M — established creator</div>
+      <div class="option" onclick="selectOption('q2', this, '1M+')"><div class="opt-key">E</div> 1M+ — large creator</div>
+    </div>
+    <div class="q-nav">
+      <button class="btn-back" onclick="prevQ()">← Back</button>
+      <button class="btn-next" id="next-q2" onclick="nextQ()" disabled>Next →</button>
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="question-screen" id="q3">
+    <div class="q-section-label">👤 About You</div>
+    <div class="q-number">Question 3</div>
+    <div class="q-text">What's your content niche?</div>
+    <div class="q-hint">Pick the one that fits best.</div>
+    <div class="options-grid" id="opts-q3">
+      <div class="option" onclick="selectOption('q3', this, 'Finance / Investing')"><div class="opt-key">A</div> Finance / Investing</div>
+      <div class="option" onclick="selectOption('q3', this, 'Business / Entrepreneurship')"><div class="opt-key">B</div> Business</div>
+      <div class="option" onclick="selectOption('q3', this, 'Coaching / Self-help')"><div class="opt-key">C</div> Coaching / Self-help</div>
+      <div class="option" onclick="selectOption('q3', this, 'Tech / AI')"><div class="opt-key">D</div> Tech / AI</div>
+      <div class="option" onclick="selectOption('q3', this, 'Education / Tutorials')"><div class="opt-key">E</div> Education</div>
+      <div class="option" onclick="selectOption('q3', this, 'Fitness / Health')"><div class="opt-key">F</div> Fitness / Health</div>
+      <div class="option" onclick="selectOption('q3', this, 'Entertainment / Vlogs')"><div class="opt-key">G</div> Entertainment</div>
+      <div class="option" onclick="selectOption('q3', this, 'Other')"><div class="opt-key">H</div> Other</div>
+    </div>
+    <div class="q-nav">
+      <button class="btn-back" onclick="prevQ()">← Back</button>
+      <button class="btn-next" id="next-q3" onclick="nextQ()" disabled>Next →</button>
+    </div>
+  </div>
+
+  <!-- ══ SECTION BREAK B ══ -->
+  <div class="section-break" id="break-B">
+    <div class="section-break-num">02</div>
+    <div class="section-break-label">Your Content Pain Points</div>
+    <div class="section-break-desc">Be brutally honest — this is the most important section.</div>
+    <button class="btn-next" onclick="nextQ()">Continue →</button>
+  </div>
+
+  <!-- Q4 -->
+  <div class="question-screen" id="q4">
+    <div class="q-section-label">😓 Pain Points</div>
+    <div class="q-number">Question 4</div>
+    <div class="q-text">How many hours per week do you spend on content production? <em>(not ideation — actual making)</em></div>
+    <div class="options" id="opts-q4">
+      <div class="option" onclick="selectOption('q4', this, 'Under 5 hours')"><div class="opt-key">A</div> Under 5 hours — it's quick for me</div>
+      <div class="option" onclick="selectOption('q4', this, '5–10 hours')"><div class="opt-key">B</div> 5–10 hours</div>
+      <div class="option" onclick="selectOption('q4', this, '10–20 hours')"><div class="opt-key">C</div> 10–20 hours — it's a lot</div>
+      <div class="option" onclick="selectOption('q4', this, '20–40 hours')"><div class="opt-key">D</div> 20–40 hours — nearly full time</div>
+      <div class="option" onclick="selectOption('q4', this, '40+ hours')"><div class="opt-key">E</div> 40+ hours — it IS my full time job</div>
+    </div>
+    <div class="q-nav">
+      <button class="btn-back" onclick="prevQ()">← Back</button>
+      <button class="btn-next" id="next-q4" onclick="nextQ()" disabled>Next →</button>
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="question-screen" id="q5">
+    <div class="q-section-label">😓 Pain Points</div>
+    <div class="q-number">Question 5</div>
+    <div class="q-text">Which part of content creation do you find most exhausting?</div>
+    <div class="q-hint">Select all that apply.</div>
+    <div class="options" id="opts-q5" style="gap:8px">
+      <div class="checkbox-option" onclick="toggleCheck('q5', this, 'Coming up with ideas')"><div class="checkbox-box">✓</div> Coming up with ideas consistently</div>
+      <div class="checkbox-option" onclick="toggleCheck('q5', this, 'Writing scripts')"><div class="checkbox-box">✓</div> Writing scripts / outlines</div>
+      <div class="checkbox-option" onclick="toggleCheck('q5', this, 'Recording on camera')"><div class="checkbox-box">✓</div> Recording on camera (showing my face)</div>
+      <div class="checkbox-option" onclick="toggleCheck('q5', this, 'Video editing')"><div class="checkbox-box">✓</div> Video editing</div>
+      <div class="checkbox-option" onclick="toggleCheck('q5', this, 'Adding captions / thumbnails')"><div class="checkbox-box">✓</div> Adding captions / designing thumbnails</div>
+      <div class="checkbox-option" onclick="toggleCheck('q5', this, 'Posting consistently')"><div class="checkbox-box">✓</div> Posting consistently (staying on schedule)</div>
+      <div class="checkbox-option" onclick="toggleCheck('q5', this, 'Repurposing content across platforms')"><div class="checkbox-box">✓</div> Repurposing content across platforms</div>
+    </div>
+    <div style="margin-bottom:32px"></div>
+    <div class="q-nav">
+      <button class="btn-back" onclick="prevQ()">← Back</button>
+      <button class="btn-next" id="next-q5" onclick="nextQ()">Next →</button>
+    </div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="question-screen" id="q6">
+    <div class="q-section-label">😓 Pain Points</div>
+    <div class="q-number">Question 6</div>
+    <div class="q-text">How often do you miss your own posting schedule because production takes too long?</div>
+    <div class="options" id="opts-q6">
+      <div class="option" onclick="selectOption('q6', this, 'Never — I always post on time')"><div class="opt-key">A</div> Never — I always post on time</div>
+      <div class="option" onclick="selectOption('q6', this, 'Rarely — maybe once a month')"><div class="opt-key">B</div> Rarely — maybe once a month</div>
+      <div class="option" onclick="selectOption('q6', this, 'Sometimes — a few times a month')"><div class="opt-key">C</div> Sometimes — a few times a month</div>
+      <div class="option" onclick="selectOption('q6', this, 'Often — production is my bottleneck')"><div class="opt-key">D</div> Often — production is my bottleneck</div>
+      <div class="option" onclick="selectOption('q6', this, 'Always — I post whenever it is ready')"><div class="opt-key">E</div> Always — I post whenever it's ready, no schedule</div>
+    </div>
+    <div class="q-nav">
+      <button class="btn-back" onclick="prevQ()">← Back</button>
+      <button class="btn-next" id="next-q6" onclick="nextQ()" disabled>Next →</button>
+    </div>
+  </div>
+
+  <!-- ══ SECTION BREAK C ══ -->
+  <div class="section-break" id="break-C">
+    <div class="section-break-num">03</div>
+    <div class="section-break-label">The AI Twin Concept</div>
+    <div class="section-break-desc">Now we'll describe what we're building and ask for your reaction.</div>
+    <button class="btn-next" onclick="nextQ()">Continue →</button>
+  </div>
+
+  <!-- Q7 -->
+  <div class="question-screen" id="q7">
+    <div class="q-section-label">🤖 The Concept</div>
+    <div class="q-number">Question 7</div>
+    <div class="q-text">Imagine an AI that clones your voice, face, and content style — then generates ready-to-post videos automatically, in your exact style. How excited does this make you?</div>
+    <div class="q-hint">1 = Not interested at all &nbsp;·&nbsp; 10 = Take my money right now</div>
+    <div class="scale-wrap">
+      <div class="scale-labels"><span>Not interested</span><span>Take my money</span></div>
+      <div class="scale-options" id="opts-q7">
+        <div class="scale-btn" onclick="selectScale('q7', this, '1')">1</div>
+        <div class="scale-btn" onclick="selectScale('q7', this, '2')">2</div>
+        <div class="scale-btn" onclick="selectScale('q7', this, '3')">3</div>
+        <div class="scale-btn" onclick="selectScale('q7', this, '4')">4</div>
+        <div class="scale-btn" onclick="selectScale('q7', this, '5')">5</div>
+        <div class="scale-btn" onclick="selectScale('q7', this, '6')">6</div>
+        <div class="scale-btn" onclick="selectScale('q7', this, '7')">7</div>
+        <div class="scale-btn" onclick="selectScale('q7', this, '8')">8</div>
+        <div class="scale-btn" onclick="selectScale('q7', this, '9')">9</div>
+        <div class="scale-btn" onclick="selectScale('q7', this, '10')">10</div>
+      </div>
+    </div>
+    <div class="q-nav">
+      <button class="btn-back" onclick="prevQ()">← Back</button>
+      <button class="btn-next" id="next-q7" onclick="nextQ()" disabled>Next →</button>
+    </div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="question-screen" id="q8">
+    <div class="q-section-label">🤖 The Concept</div>
+    <div class="q-number">Question 8</div>
+    <div class="q-text">What's your biggest concern about using an AI twin for your content?</div>
+    <div class="q-hint">Be honest — this helps us solve the right problems.</div>
+    <div class="options" id="opts-q8">
+      <div class="option" onclick="selectOption('q8', this, 'Audience will think it is fake / lose trust')"><div class="opt-key">A</div> My audience will think it's fake and lose trust</div>
+      <div class="option" onclick="selectOption('q8', this, 'Quality won\'t sound like me')"><div class="opt-key">B</div> The quality won't sound / look like me</div>
+      <div class="option" onclick="selectOption('q8', this, 'Privacy — my voice and face being cloned')"><div class="opt-key">C</div> Privacy — my voice and face being cloned</div>
+      <div class="option" onclick="selectOption('q8', this, 'Content won\'t match my thinking / opinions')"><div class="opt-key">D</div> Content won't match my actual thinking / opinions</div>
+      <div class="option" onclick="selectOption('q8', this, 'Platform policy violations')"><div class="opt-key">E</div> Platform might penalise AI-generated content</div>
+      <div class="option" onclick="selectOption('q8', this, 'No concerns')"><div class="opt-key">F</div> No major concerns — I'm open to it</div>
+    </div>
+    <div class="q-nav">
+      <button class="btn-back" onclick="prevQ()">← Back</button>
+      <button class="btn-next" id="next-q8" onclick="nextQ()" disabled>Next →</button>
+    </div>
+  </div>
+
+  <!-- Q9 -->
+  <div class="question-screen" id="q9">
+    <div class="q-section-label">🤖 The Concept</div>
+    <div class="q-number">Question 9</div>
+    <div class="q-text">If the twin's quality was indistinguishable from your real videos, which tasks would you want it to handle?</div>
+    <div class="q-hint">Select all you'd be comfortable with.</div>
+    <div class="options" id="opts-q9" style="gap:8px">
+      <div class="checkbox-option" onclick="toggleCheck('q9', this, 'Script writing in my style')"><div class="checkbox-box">✓</div> Writing scripts in my voice and style</div>
+      <div class="checkbox-option" onclick="toggleCheck('q9', this, 'Narrating videos')"><div class="checkbox-box">✓</div> Narrating videos (voice only, no face)</div>
+      <div class="checkbox-option" onclick="toggleCheck('q9', this, 'Full video with my face avatar')"><div class="checkbox-box">✓</div> Full video with my face avatar (lip-synced)</div>
+      <div class="checkbox-option" onclick="toggleCheck('q9', this, 'Shorts / Reels from long videos')"><div class="checkbox-box">✓</div> Auto-cutting Shorts / Reels from long videos</div>
+      <div class="checkbox-option" onclick="toggleCheck('q9', this, 'Replying to comments in my style')"><div class="checkbox-box">✓</div> Replying to comments / DMs in my style</div>
+      <div class="checkbox-option" onclick="toggleCheck('q9', this, 'Auto-posting at the best time')"><div class="checkbox-box">✓</div> Auto-posting at the optimal time</div>
+    </div>
+    <div style="margin-bottom:32px"></div>
+    <div class="q-nav">
+      <button class="btn-back" onclick="prevQ()">← Back</button>
+      <button class="btn-next" id="next-q9" onclick="nextQ()">Next →</button>
+    </div>
+  </div>
+
+  <!-- ══ SECTION BREAK D ══ -->
+  <div class="section-break" id="break-D">
+    <div class="section-break-num">04</div>
+    <div class="section-break-label">Pricing & Willingness to Pay</div>
+    <div class="section-break-desc">The most important section for us. Be completely honest.</div>
+    <button class="btn-next" onclick="nextQ()">Continue →</button>
+  </div>
+
+  <!-- Q10 -->
+  <div class="question-screen" id="q10">
+    <div class="q-section-label">💰 Pricing</div>
+    <div class="q-number">Question 10</div>
+    <div class="q-text">This service generates 20 publish-ready videos/month in your voice & style. What monthly fee feels <em>fair</em> to you?</div>
+    <div class="q-hint">Think of it replacing: scriptwriter + voiceover + video editor + thumbnail designer.</div>
+    <div class="options" id="opts-q10">
+      <div class="option" onclick="selectOption('q10', this, 'Under ₹2,000')"><div class="opt-key">A</div> Under ₹2,000/month</div>
+      <div class="option" onclick="selectOption('q10', this, '₹2,000–₹5,000')"><div class="opt-key">B</div> ₹2,000–₹5,000/month</div>
+      <div class="option" onclick="selectOption('q10', this, '₹5,000–₹10,000')"><div class="opt-key">C</div> ₹5,000–₹10,000/month</div>
+      <div class="option" onclick="selectOption('q10', this, '₹10,000–₹20,000')"><div class="opt-key">D</div> ₹10,000–₹20,000/month</div>
+      <div class="option" onclick="selectOption('q10', this, 'Above ₹20,000')"><div class="opt-key">E</div> Above ₹20,000/month</div>
+    </div>
+    <div class="q-nav">
+      <button class="btn-back" onclick="prevQ()">← Back</button>
+      <button class="btn-next" id="next-q10" onclick="nextQ()" disabled>Next →</button>
+    </div>
+  </div>
+
+  <!-- Q11 -->
+  <div class="question-screen" id="q11">
+    <div class="q-section-label">💰 Pricing</div>
+    <div class="q-number">Question 11</div>
+    <div class="q-text">There's a one-time setup fee to train your AI twin (voice + face + knowledge). What's the most you'd pay upfront?</div>
+    <div class="options" id="opts-q11">
+      <div class="option" onclick="selectOption('q11', this, 'Nothing — setup should be free')"><div class="opt-key">A</div> Nothing — setup should be free</div>
+      <div class="option" onclick="selectOption('q11', this, 'Up to ₹2,999')"><div class="opt-key">B</div> Up to ₹2,999</div>
+      <div class="option" onclick="selectOption('q11', this, '₹3,000–₹7,999')"><div class="opt-key">C</div> ₹3,000–₹7,999</div>
+      <div class="option" onclick="selectOption('q11', this, '₹8,000–₹15,000')"><div class="opt-key">D</div> ₹8,000–₹15,000</div>
+      <div class="option" onclick="selectOption('q11', this, 'Above ₹15,000 if quality is great')"><div class="opt-key">E</div> Above ₹15,000 if the quality is great</div>
+    </div>
+    <div class="q-nav">
+      <button class="btn-back" onclick="prevQ()">← Back</button>
+      <button class="btn-next" id="next-q11" onclick="nextQ()" disabled>Next →</button>
+    </div>
+  </div>
+
+  <!-- Q12 -->
+  <div class="question-screen" id="q12">
+    <div class="q-section-label">💰 Pricing</div>
+    <div class="q-number">Question 12</div>
+    <div class="q-text">If you stopped paying the monthly subscription, you lose access and can't generate new videos. Does this model feel acceptable?</div>
+    <div class="q-hint">This is how tools like Adobe and Canva work.</div>
+    <div class="options" id="opts-q12">
+      <div class="option" onclick="selectOption('q12', this, 'Yes — totally fine, same as other SaaS tools')"><div class="opt-key">A</div> Yes — totally fine, same as other SaaS tools</div>
+      <div class="option" onclick="selectOption('q12', this, 'Yes but I\'d want to own the twin data')"><div class="opt-key">B</div> Yes, but I'd want to own / export my twin data</div>
+      <div class="option" onclick="selectOption('q12', this, 'Uncomfortable — I want to own it outright')"><div class="opt-key">C</div> Uncomfortable — I want to own it outright</div>
+      <div class="option" onclick="selectOption('q12', this, 'Deal breaker')"><div class="opt-key">D</div> Deal breaker — I wouldn't use it on this model</div>
+    </div>
+    <div class="q-nav">
+      <button class="btn-back" onclick="prevQ()">← Back</button>
+      <button class="btn-next" id="next-q12" onclick="nextQ()" disabled>Next →</button>
+    </div>
+  </div>
+
+  <!-- ══ SECTION BREAK E ══ -->
+  <div class="section-break" id="break-E">
+    <div class="section-break-num">05</div>
+    <div class="section-break-label">Final Two Questions</div>
+    <div class="section-break-desc">Almost done — these are the most valuable answers for us.</div>
+    <button class="btn-next" onclick="nextQ()">Almost there →</button>
+  </div>
+
+  <!-- Q13 -->
+  <div class="question-screen" id="q13">
+    <div class="q-section-label">🎯 Final Questions</div>
+    <div class="q-number">Question 13</div>
+    <div class="q-text">What would make you trust an AI twin enough to actually use it for your channel?</div>
+    <div class="q-hint">Be specific — this directly shapes what we build first.</div>
+    <textarea class="text-input" id="input-q13" placeholder="e.g. I'd need to hear a sample first, review every video before it goes live, see other creators using it successfully..." oninput="enableNext('q13')"></textarea>
+    <div class="q-nav">
+      <button class="btn-back" onclick="prevQ()">← Back</button>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
+        <button class="btn-next" id="next-q13" onclick="nextQ()" disabled>Next →</button>
+        <span class="skip-link" onclick="skipQ('q13')">Skip this question</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q14 -->
+  <div class="question-screen" id="q14">
+    <div class="q-section-label">🎯 Final Questions</div>
+    <div class="q-number">Question 14</div>
+    <div class="q-text">If we build this and it works exactly as described — would you be an early user?</div>
+    <div class="options" id="opts-q14">
+      <div class="option" onclick="selectOption('q14', this, 'Yes — sign me up as a beta tester')"><div class="opt-key">A</div> 🙋 Yes — sign me up as a beta tester</div>
+      <div class="option" onclick="selectOption('q14', this, 'Yes — I\'d pay from day one')"><div class="opt-key">B</div> 💳 Yes — I'd pay from day one if quality is right</div>
+      <div class="option" onclick="selectOption('q14', this, 'Maybe — need to see it working first')"><div class="opt-key">C</div> 🤔 Maybe — I need to see it working first</div>
+      <div class="option" onclick="selectOption('q14', this, 'Probably not')"><div class="opt-key">D</div> 🙅 Probably not — not the right fit for me</div>
+    </div>
+    <div class="q-nav">
+      <button class="btn-back" onclick="prevQ()">← Back</button>
+      <button class="btn-next" id="next-q14" onclick="submitSurvey()" disabled>Submit →</button>
+    </div>
+  </div>
+
+  <!-- ══ THANK YOU ══ -->
+  <div id="screen-thanks">
+    <span class="thanks-icon">🎉</span>
+    <h2 class="thanks-title">You're <em>amazing.</em><br>Thank you.</h2>
+    <p class="thanks-sub">Your answers will directly shape what we build. If we move forward, we'll reach out personally — you'll be first in line.</p>
+
+    <div class="summary-card">
+      <div class="summary-title">📋 Your Responses</div>
+      <div id="summary-list"></div>
+    </div>
+
+    <div id="send-status" style="font-size:13px;margin-bottom:16px;min-height:20px;font-weight:600;"></div>
+
+    <div class="share-note">
+      <strong>Know another creator?</strong> Forward this survey to them — the more creators we hear from, the better product we can build for everyone.
+    </div>
+
+    <button class="btn-share" onclick="copyLink()">📋 Copy Survey Link</button>
+  </div>
+
+</div><!-- /wrapper -->
+
+<script>
+// ── SURVEY STATE ──
+const answers = {};
+const multiAnswers = {};
+
+// Question order including section breaks
+const flow = [
+  'break-A',
+  'q1','q2','q3',
+  'break-B',
+  'q4','q5','q6',
+  'break-C',
+  'q7','q8','q9',
+  'break-D',
+  'q10','q11','q12',
+  'break-E',
+  'q13','q14'
+];
+
+const questionLabels = {
+  q1: 'Primary platform',
+  q2: 'Follower count',
+  q3: 'Content niche',
+  q4: 'Hours/week on production',
+  q5: 'Exhausting tasks',
+  q6: 'Miss posting schedule',
+  q7: 'Excitement score (1–10)',
+  q8: 'Biggest concern',
+  q9: 'Tasks for twin',
+  q10: 'Monthly fee (fair)',
+  q11: 'Setup fee (max)',
+  q12: 'Access-lock model',
+  q13: 'What builds trust',
+  q14: 'Would you use it?'
+};
+
+const totalQuestions = 14;
+let currentIndex = -1; // -1 = intro
+let questionNum = 0;
+
+function startSurvey() {
+  document.getElementById('screen-intro').style.display = 'none';
+  currentIndex = 0;
+  showCurrent();
+}
+
+function showCurrent() {
+  // Hide all
+  document.querySelectorAll('.question-screen, .section-break').forEach(el => el.classList.remove('active'));
+  
+  const id = flow[currentIndex];
+  const el = document.getElementById(id);
+  if (el) el.classList.add('active');
+
+  // Update question counter
+  const isQuestion = id.startsWith('q');
+  if (isQuestion) {
+    questionNum = parseInt(id.replace('q',''));
+    document.getElementById('qCounter').textContent = questionNum;
+    document.getElementById('progressFill').style.width = ((questionNum / totalQuestions) * 100) + '%';
+  }
+}
+
+function nextQ() {
+  if (currentIndex < flow.length - 1) {
+    currentIndex++;
+    showCurrent();
+  } else {
+    submitSurvey();
+  }
+}
+
+function prevQ() {
+  if (currentIndex > 0) {
+    currentIndex--;
+    showCurrent();
+  }
+}
+
+function selectOption(qid, el, value) {
+  // Deselect all in group
+  document.querySelectorAll(`#opts-${qid} .option`).forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  answers[qid] = value;
+  const nextBtn = document.getElementById(`next-${qid}`);
+  if (nextBtn) nextBtn.disabled = false;
+}
+
+function selectScale(qid, el, value) {
+  document.querySelectorAll(`#opts-${qid} .scale-btn`).forEach(b => b.classList.remove('selected'));
+  el.classList.add('selected');
+  answers[qid] = value;
+  const nextBtn = document.getElementById(`next-${qid}`);
+  if (nextBtn) nextBtn.disabled = false;
+}
+
+function toggleCheck(qid, el, value) {
+  el.classList.toggle('checked');
+  if (!multiAnswers[qid]) multiAnswers[qid] = [];
+  const idx = multiAnswers[qid].indexOf(value);
+  if (idx === -1) multiAnswers[qid].push(value);
+  else multiAnswers[qid].splice(idx, 1);
+  answers[qid] = multiAnswers[qid].join(', ') || 'None selected';
+}
+
+function enableNext(qid) {
+  const val = document.getElementById(`input-${qid}`).value.trim();
+  const nextBtn = document.getElementById(`next-${qid}`);
+  if (nextBtn) nextBtn.disabled = val.length < 3;
+  if (val) answers[qid] = val;
+}
+
+function skipQ(qid) {
+  answers[qid] = '(skipped)';
+  nextQ();
+}
+
+// ── PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL HERE ──
+const SHEET_WEBHOOK_URL = 'YOUR_APPS_SCRIPT_URL_HERE';
+
+async function submitSurvey() {
+  // Collect text inputs
+  ['q13'].forEach(id => {
+    const el = document.getElementById(`input-${id}`);
+    if (el && el.value.trim()) answers[id] = el.value.trim();
+  });
+
+  // Hide all screens
+  document.querySelectorAll('.question-screen, .section-break').forEach(el => el.classList.remove('active'));
+  document.getElementById('progressFill').style.width = '100%';
+  document.getElementById('qCounter').textContent = '✓';
+
+  // Build summary UI
+  const summaryList = document.getElementById('summary-list');
+  summaryList.innerHTML = '';
+  Object.entries(questionLabels).forEach(([qid, label]) => {
+    const answer = answers[qid] || '—';
+    if (answer === '—' || answer === '(skipped)') return;
+    summaryList.innerHTML += `
+      <div class="summary-item">
+        <div class="summary-q">${label}</div>
+        <div class="summary-a">${answer}</div>
+      </div>`;
+  });
+
+  // ── SEND TO GOOGLE SHEETS ──
+  const payload = {
+    timestamp:      new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
+    platform:       answers.q1  || '',
+    followers:      answers.q2  || '',
+    niche:          answers.q3  || '',
+    hoursPerWeek:   answers.q4  || '',
+    exhaustingTasks:answers.q5  || '',
+    missesSchedule: answers.q6  || '',
+    excitementScore:answers.q7  || '',
+    biggestConcern: answers.q8  || '',
+    tasksForTwin:   answers.q9  || '',
+    fairMonthlyFee: answers.q10 || '',
+    maxSetupFee:    answers.q11 || '',
+    accessLockOk:   answers.q12 || '',
+    trustFactors:   answers.q13 || '',
+    wouldUseIt:     answers.q14 || ''
+  };
+
+  // Show sending indicator
+  const sendStatus = document.getElementById('send-status');
+  sendStatus.textContent = '⏳ Saving your response...';
+  sendStatus.style.color = 'var(--ink3)';
+
+  // Send to Google Sheets
+  const SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbwTXJ_CiewKy4WAPvcBeMp_nafc4CdxIY5f-wSrrl-GWRiW5ML1zCBZG-NIL_bMGrRK/exec";
+  try {
+  await fetch(SHEET_WEBHOOK_URL, {
+    method: 'POST',
+    mode: 'no-cors', 
+    headers: { 'Content-Type': 'text/plain' },
+    body: JSON.stringify(payload)
+  });
+  sendStatus.textContent = '✅ Response saved to Google Sheets!';
+  sendStatus.style.color = 'var(--accent3)';
+} catch (err) {
+  sendStatus.textContent = '⚠️ Could not reach Google Sheets — check your URL';
+  sendStatus.style.color = 'var(--accent)';
+}
+
+  const thanks = document.getElementById('screen-thanks');
+  thanks.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function copyLink() {
+  navigator.clipboard.writeText(window.location.href).then(() => {
+    const btn = document.querySelector('.btn-share');
+    btn.textContent = '✅ Copied!';
+    setTimeout(() => btn.textContent = '📋 Copy Survey Link', 2000);
+  });
+}
+</script>
+</body>
+</html>
